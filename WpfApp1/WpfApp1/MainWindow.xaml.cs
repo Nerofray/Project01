@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,22 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        ObservableCollection<Book> list = new ObservableCollection<Book>();
         public MainWindow()
         {
             InitializeComponent();
+            listView.ItemsSource = list;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 w1 = new Window1(list);
+            w1.ShowDialog();
+        }
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

@@ -7,6 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ToolBar>
+            <Button Click="Button_Click">
+                Add book...
+            </Button>
+        </ToolBar>
+        <ListView Name="listView" Grid.Column="1" SelectionChanged="listView_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Background="Red" Height="300" Width="250">
+                        <Image Source="{Binding imBook}" Height="200" Width="200"></Image>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding name}"/>
+                        <TextBlock HorizontalAlignment="Center" Text="{Binding author}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>
